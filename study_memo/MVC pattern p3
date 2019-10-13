@@ -1,0 +1,30 @@
+지금까지 라우팅해줄때 ~~.get(url, 람다식~ res.send(정보)) 
+이런식으로 코드를 작성했는데 이 구조에서 조금 더 자유로워 지기 위해  'controller' 사용한다.
+
+우선은 controller 폴더를 만들고 그 안에 userController와 videoController를 만들것.
+대개 프로젝트에 있는 각 모델마다 컨트롤러를 만들게 됌.
+
+routes를 다시 보면 global에서 join~logout은 user에 관한것이고
+search는 video에 관한것이다
+=> video와 user에 관한 것만 있어서 컨트롤러도 그 2개만 만들것.
+
+나중에는 comment(댓글)도 만들건데 video와 밀접한 연관이 있어서 video controller에.
+
+컨트롤러는 어떤일이 어떻게 발생하는지에 대한 로직이다.
+파일들에 있는 함수들... 그 함수들을 controller로 만들것
+그리고 그 파일들에 함수를 추가할것
+추가할 함수를 각각 export
+예를들어 globalRouter에서 homegㅏㅁ수는 videoController로 이동
+
+
+VSCode의 매직--
+userController에서 home inport를 시도!
+home에서 res.send부분에 그냥 컨트롤러에 있는 객체 home을 입력!
+==> Auto Import !!
+
+이제 globalRouter가 videoRouter와 비교했을때 심플해졌따!
+이 로직은 지금은 모르지만 나중에 점점 코드가 복잡해질수 있다. 데이터베이스를 조회해서 사용자 정보를 알아볼수도 있고 , 
+에러인지 아닌지 알려줘야 할수도있다. 이렇게 할일이 커질때 코드를 분리하면 좋음.
+
+
+Controller가 긑난 후에는 template를 본다. MVC의 View에 해당하는 부분 그다음은 Model.
