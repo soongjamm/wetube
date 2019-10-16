@@ -1,0 +1,52 @@
+템플릿에 정보를 추가할 것!
+
+컨트롤러에 있는정보를 템플릿에 추가하는 방법
+한 템플릿에만 추가하거나 전체 템플릿에 추가하거나.
+
+1. 템플릿 전체에 추가하는 방법. 
+헤더가 라우트 객체에 접근하도록 하고싶다. 
+미들웨어를 사용해야 함. 미들웨어는 레이어 같은거다. 위에서 아래로 한단계씩 내려감
+처음에 view engine을 pug로 cookie 파싱, helmet... morgan...
+그 뒤 컨트롤러와 라우트들이 있음.
+
+locals 라는 미들웨어를 만들 것. local변수를 global하게 만들어주는 용도
+local 기능을 통해 변수에 접근할 수 있다.
+app.use 안에 함수를 추가한다.
+
+localsMiddleware라는 함수를 만들었다가 그냥 js파일을 하나 더 만들었다!(middlewares.js)
+그리고 그 함수를 복붙한 뒤 export!
+이제 여기에 locals를 추가할것. locals가 추가되면 이제 그것들을 템플릿, 컨트롤러 어디서든 쓸수있다.
+
+미들웨어를 app.js 사이에 넣는다면 그 위에 있는 globalRouter, userRouter에서는
+locals에 접근을 못함. 그래서 어디에 위치시킬지 잘 알아야함.
+local 변수에 접근하기 위해 localsMiddleware를 사용할것이다.
+
+import할때는 알파벳 순으로 하는 습관을 들이자.
+
+expressjs에서 response- locals 찾아봄.
+res.locals 사용할거. locals뒤에 아무거나 와도된다. 
+ex res.locals.siteName = "WeTube" 한 다음에
+main.pug에서 title을 직접 입력말고 위에 것을 변수로 사용 #{}
+==> locals에 있는건 템플릿에 변수명처럼 존재한다. 
+
+다른 locals도 추가 routes에 routes.js객체를 추가할것. 이파일 임포트
+이제 partials/header에서 #대신 routes를 쓸 수 있다. routes.join
+존재하지 않는 route적으면 링크 안걸림
+
+미들웨어가 next에 req를 전달해야한다. 이 경우 미들웨어가 커넥션과 
+라우트들 사이에 있으니까 next()라고 하면됌
+
+##
+(response)locals에 로컬변수를 저장하면, 
+이 변수들을 템플릿에서 사용할 수 있다.
+그럼 템플릿을 직접 수정하는 대신 미들웨어에서 수정하면 된다.
+나중에 사용자 관련 데이터를 locals에 저장한다
+
+##
+전역적으로 사용할 수 있는 변수를 추가하는 방법을 알아보았다.
+모든 템플릿, 뷰, 모든곳에서 사용 가능하다.
+그리고 미들웨어는 코드 사이에 들어가 있어서 next를 호출해야만 다음함수로 넘어간다.
+이 경우에는 다음 라우터들로 넘어가게 된다.
+
+(app.js에서 import할때 localsMiddleware {}괄호 이유: 파일이름이 아니라 variable을 임포트한거라)
+

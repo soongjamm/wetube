@@ -35,3 +35,5 @@ Logged out header를 추가. 만약 로그아웃된 상태라면 joint과 login�
 ex. pug에서 /join 이렇게 썼다가, routes에서 내용바뀌면 일일이 다 수정해야함
 One single source of truth(한 곳에서만 정보를 보관) 
 *****더 나은 코드를 만들어주는 원칙 버그 최소화.
+
+다음 비디오는 Pug에 정보와 변수를 추가해서 템플릿을 더 스마트하게 작성하는 방법
