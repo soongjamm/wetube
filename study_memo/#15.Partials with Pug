@@ -1,0 +1,37 @@
+Partials는 페이지의 일부분. 조직적인 목적으로만 만들어짐.
+footer.pug, header.pug라는 파일을 만든다. 
+footer.pug는 footer가 될거고 footer태그를 추가한다. 아이콘은 유튜브아이콘
+font awesome에서 아이콘을 추가해보자. (무료버전. 코드복사)
+main.pug 헤드에다가 복붙하자 (html방식이던 pug방식이던 작동함)
+
+youtube icon을 찾아서 footer.pug에 복붙하고 그 앞에 div를 추가한다
+footer태그에 footer 클래스를 추가하고 div에는 footer__icon이라는 클래스 추가
+icon 다음에는 footer__text가 클래스명인 span태그 추가
+
+pug는 html뿐만아니라 프로그래밍이 가능하다고 했다.
+footer에 년도를 넣을건데 매년 수정하는 것이 아닌, 동적으로 수정되게 할것.
+main.pug에서 footer를 지우고 include ../partials/footer 추가
+
+This is how to isolate the components !
+더 조직적인 방식, footer와 header는 각각 한곳에만 있어서 더 조직화, 깔끔함
+
+프로그래밍은 분할 정복 !
+
+다시 돌아와서 #{}안에 코드를 넣으면 된다. (js는 $ pug는 #)
+new Date().getFullYear()
+
+
+이제 header를 만들것. 모든 링크들이 들어갈것.
+header추가하고 클래스명 header. 그 안에 2개의 column을 추가. 왼-오른열
+만약 div를 이런식으로 추가할 때, 클래스명 앞에 div 적지 않아도 됌
+
+Logged out header를 추가. 만약 로그아웃된 상태라면 joint과 login이 보여야함
+로그인 된 상태라면 logout, upload video, profile이 헤더에 보여야함
+이제 이 partial을 main 레이아웃에 추가한다.
+
+나중에 로그인이 되었는지 아닌지 자동으로 알고 HTMLd 자동으로 바꿔서 표시해줄것.
+
+우리가 추가한 라우트들이 pug파일들에 연결되면 좋겠다.
+ex. pug에서 /join 이렇게 썼다가, routes에서 내용바뀌면 일일이 다 수정해야함
+One single source of truth(한 곳에서만 정보를 보관) 
+*****더 나은 코드를 만들어주는 원칙 버그 최소화.
