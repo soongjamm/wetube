@@ -1,0 +1,27 @@
+컨트롤러를 하기전에 페이지를 만들자.
+
+프론트엔드 부분은 백엔드가 끝나고 할것. 작업이 섞이면 혼란스럽다.
+
+partials/header 파일을 조금 수정. 칼럼을 추가한다.
+form을 추가하는데 method는 get으로. url에 있는 값들을 보기 위해서다
+action은 routes.search로.
+실행해서 검색창에 입력후 엔터치면 search 페이지로 이동한다.
+*그리고 주소 뒤에 ?가 붙는데, input에 name을 추가하지 않아서 이다.
+name="term" 추가하면 url이 바뀜.
+
+search 페이지에 표시할 정보들이 주어짐. 이제 search 페이지를 수정.
+search__header클래스 div 생성후 h3태그 추가, searchingBy라는 변수 이용 출력
+하지만 아직 searchingBy는 비어있다. 
+완성되었을땐 searching by {android} 같이 출력되어야함.
+-> controller를 수정해야한다. 
+
+req.query가 그 검색어 정보를 담고 있다. query.
+=> express가 query를 집어넣는것. 많은것들을 추가할수있다. &로 추가하면됌
+ex.) search?term=android&price=looloo-papa&shits=goingon
+
+req.query.term을 가져올것. 
+ES6이전에는 const term = req.query.term
+새로운방식 : const {} = req
+=> const {query: {term : searchingBy}} = req (학교수업때 배운 해체를 생각하자)
+(query = request.query와 같음)
+변수보낼때는 searchingBy: searchingBy에서 searchingBy만 해도 됌 Babel관련...
