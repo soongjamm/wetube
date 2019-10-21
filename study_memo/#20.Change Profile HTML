@@ -1,0 +1,9 @@
+join에서 사용한 것과 같은 클래스 그대로 쓴다.
+.form__container 이걸모든곳에 그대로 쓸 것.
+그리고 이 안에 form태그를 추가.d
+
+이상하게 자꾸 edit-profile이 안나오고 user-detail로 넘어갔는데,
+routes를 보면 user-detail은 "/:id" 이다.
+그래서 라우터가 edit-profile이 :id에 해당한다고 인식한 것이다.
+
+이것저것 만들고 change-password 링크도 만들어주고
