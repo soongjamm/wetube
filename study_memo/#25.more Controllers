@@ -1,0 +1,46 @@
+이제 누군가가 비디오를 클릭하면 비디오 상세 페이지로 보이도록 하고싶음
+-> mixin 수정할 것. (mixin은 반복해서 사용해야 되는 코드를 재사용 하기 위함 복붙x)
+
+갑자기 upload가 안들어가졌는데
+/videos/upload로 이동해야. /upload먄 안됌
+
+####
+app.js에서 이미 middleware로 localhost/videos를 불러들인다
+그리고 그 안에서 get으로 upload에 대한 처리를 하기 때문에 url 요청은 정상적
+
+이 경우에는 home.pug에서 a태그를 걸때 그냥 /upload로 가게끔 되어있었다.
+####
+
+upload페이지로 이동. 이 form은 /~/upload로 가는거니까,
+요청에 응답할 수 있어야함.
+=> getUpload와 postUpload를 만들자.
+
+함수들을 정의 햊고 post에서 body를 받아오자. 요청하는 정보들의 name이 무엇 등등
+=> upload페이지 보면 어떤입력 받는지 아니까 가서 보자.
+비디오를 업로드한다고 가정. 비디오에 해당하는 id를 가질것. video가 새로 생성되고
+생성된 데이터의 id를 가져온다.
+업로드 후에 사용자를 새로 생성된 비디오 id에 해당하는 videoDetail 페이지로
+redirect 할것.
+=>
+사용자가 비디오를 업로드 하고나면, 새로운 id를 한환받고, 업로드 후에 사용자를
+업로드한 비디오의 videoDetail 페이지로 이동시켜 주는것
+=> routes.videoDetail로 redirect
+
+업로드를 해보면 videoDetail이 undefined라고 에러가 뜨는데
+이것은 routes를 import할때 문제. 
+routes는 default export 이기 때문에 import시 {} 쓰면 안됌
+
+----
+이정도면 흐름 좋은데, 이제 보안도 신경을 써보자.
+정보를 아무것도 입력하지 않고 upload 클릭해도 상세페이지 이동. 잘못됬음
+upload.pug input에 required=true 추가.
+join에도 같은 작업.
+login도
+
+
+
+
+
+--QUIZ--
+컨트롤러는 데이터를 get하고 페이지를 render 해주는 것.
+라우터는 URL들을 Controller Function들과 매핑 시켜주는 일.
