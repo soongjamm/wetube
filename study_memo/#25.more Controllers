@@ -44,3 +44,4 @@ login도
 --QUIZ--
 컨트롤러는 데이터를 get하고 페이지를 render 해주는 것.
 라우터는 URL들을 Controller Function들과 매핑 시켜주는 일.
+express쓰려고 npm은 필수는 아님
