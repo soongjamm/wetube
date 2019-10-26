@@ -1,0 +1,38 @@
+몽고디비는 documnet를 줄여준다. jsonfile. 이게 몽고디비 장점
+하지만 몽고디비에 우리의 파일이 어케 생겻ㄴㄴ지 알려줘야함
+filedㅔ 보안은 아니지만 타당성을 주는것
+(키와 벨류 관계인듯)
+
+모델 폴더생성
+파일; video.js 여기에 video들의 형태를 정의 할 것
+
+해야할 것 하나는 model, 즉 documnet name이고
+다른 하나는 schema. schema는 형태이다.
+model은 그냥 실제 data. 
+
+!!우리는 절대 Video를 Database에 저장하지 않을 것
+바이트를 저장하는게 아니라 링크를 저장하는 것
+
+우리의 경우는 우리 서버에 Video를 저장하는 거지,
+database에 비디오 저장 X 그냥 ㅅext database
+비디오 넣으면 디비가 너무 무거워짐
+
+fileURl타입은 스트링
+required로 설정, 충족되지 못하는 에러메세지~
+
+Date.now 자체는 function이고
+Date.now()는 그 함수를 실행해서 현재 날짜를 반환하는 것.
+따라서 date.now 하면 내가 document를 저장할 때마다
+ 해당 function을 실행, 현재날짜를 받음
+
+ 그외 내가 할수있는게 뭔지 보려면
+ mongoose documentation의 schema section에서 option 확인.
+
+ 이제 schema를 이용해서 model을 만들어 보자.
+ definition을 통해 실제 document를 만드는 것
+ schema가 definition 같은 것이다.
+
+현재 db는 내가 이런걸 생성했다는걸 인지하지 못하고 있다.
+연결은 되어있지만 거기에 model이 있다는건모름 그래서 추가해줘야.
+init.js에서 임포트
+import "./models/Video";

@@ -1,0 +1,13 @@
+dotenv를 구성하기 위해 처음으로 해야할 일은 .env파일 생성
+여기에 MONGO_URL 이라는 variable 생성, PORT도.
+그리고 db파일에 누구나 볼수있는 URL을 지우고 env에서 정보를 가져오자.
+그리고 찾은 모든 variable들을 process.env.key에 저장할것.
+
+init.js에도
+
+
+이제 .gitignore에 .env추가~ 이미 되있음
+
+이런식으로 key를 숨기는 것임. 다른곳에서 보이지 않음.
+
+gitignore에 env올리는걸 깜빡하면 안됌. 올려버리면 키 숨기려고하는게 헛고생됌 ㅋㅋ
