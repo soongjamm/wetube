@@ -1,0 +1,60 @@
+실제 data로 search구현 아직 안했음
+
+그리고 새로운 비디오가 위로 오게 바꿔야함
+
+find후 .sort(id:-1). -1을 값으로 주는건 위아래 순서를 바꾼다는 약속 같은 것
+제목으로도 할수있고 뭐든 할수있다. 지금은 id순서.
+
+
+#ESLint#
+현재 search에서 videos를 정의 안해줘서 에러남
+videos라는 variable 이름을 가지고 있지만 videos는 variable이나 global로 존재하지 않는중
+안좋다.
+JS는 나에게 알려주지 않음.  Linter는 자동적으로 나를 도와주는 도구다.
+할것은 console에서 npm install eslint -g
+npm은 팩키지를 설치하는것. 하지만 떄때로 그냥 패키지를 컴터 아무데서나 사용하고 싶을수도?
+만약 eslint를 글로버하게 설치하면 모든 프로젝트에서 사용 가능하다.
+그래서 -g 로 설치하는것(이랬는데 안되서 밑에 참고_)
+
+prettier - 코드 알아서 이쁘게 만들어줌
+
+
++++아 global로 설치하지 말랜다.
+
+
+
+--설치 에러 해결--
+way I solve the problem. when eslint global doesnt work
+
+1. remove if you installed eslint globally  $ npm uninstall eslint -g
+
+2. install  eslint extension on vscode
+https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+
+3.  install 3 packages manually, not by command on eslint installed globally, 
+$ yarn add eslint-config-airbnb-base eslint eslint-plugin-import
+
+4. make .eslintrc.js file and copy paste codes below
+module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  extends: "airbnb-base",
+  globals: {
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly"
+  },
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: "module"
+  },
+  rules: {}
+};
+
+5. install eslint-config-prettier $yarn add eslint-config-prettier
+
+6. go to .eslintrc.js file and change "extends" from   "airbnb-base", to ["airbnb-base", "prettier"],
+
+7. go to app.js and try save by ctrl+s  then you will see red lines if eslint activates succesfully

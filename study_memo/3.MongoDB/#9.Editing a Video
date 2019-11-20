@@ -1,0 +1,44 @@
+routes에서 editVideo 수정.
+
+routes.editVideo(video.id) (괄호추가) 로 수정한다.
+videoController에서 비디오파일을 통채로 줬는데 거기에 ID가 있음.
+라우터도 수정. routes.editVideo()는 더이상 string이 아님. function
+하지만 route가 이 function을 참조만 하지, 실행하는게 아니기 때문에 빈괄호로.
+
+빈괄호일때는 /:id/edit 같은 텍스트가 나온다.
+id를 넣어버리면 함수를 실행하는게 되버리니 안됌 
+express는 parameter를 원하지 id를 원하는게 아님
+
+유저가 비디오를 수정할때 비디오 파일을 바꾸는건 원하지 않음
+제목이나 설명등만 수정가능 하게
+
+videoController로 가서 postEditVideo 만들자.
+router도 가서 수정.추가.
+
+videoDetail에서 한것과 비슷한걸 videoController에도 해야함
+여기도 URL에서 정보를 받아야.
+
+
+수정화면에서는 제목-설명에 빈공간 없이 현재 제목과 설명으로 채워져야.
+url로부터 parameter를 받아오자 우선.
+=> getEditVideo에서 할일임.. postEditVideo는 Video를 업데이트 하는것
+get은 템플릿을 렌더링
+-> get은 뭔가를 채워넣는 작업이고 post는 업데이트하고 redirect하는 작업.
+
+위 작업이 끝나면 editVideo 템플릿에 video를 전달했음.
+그리고 input의 text부분에 값을 넣을수있다.
+textarea는 value를 속성으로 갖지않으니 다른 방식으로 넣어주도록 한다.
+
+검사들어가서 form action을 보면 videos function을 가지고 있는것을 볼수있음
+action에 해당하는 url을 수정해야. 
+
+get은 마무리했고 실질적 update가 필요(post)
+또 try-catch 해주는데 이때 이 과정을 middleware로 만들수 있다.
+어떤 /id를 가도 에러가 생기면 home으로 redirect하는거.
+방법있다는거만 알자.
+
+mongoose로 가서 쿼리에서 쓸수있는걸 찾아봅시다.
+findOneAndUpdate() id넣고, title,description 넣고.
+body 얻어야함. 왜냐면 위에 쓸비디오수정에서 제목과 설명 가져와야
+
+save도 해야하는데 다음강의에 이어서..

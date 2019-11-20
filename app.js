@@ -1,11 +1,11 @@
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import express from "express"; //const ~~ = require("~~") 였나
-import globalRouter from "./routers/globalRouter";
+import express from "express"; // const ~~ = require("~~") 였나
 import helmet from "helmet";
-import { localsMiddleware } from "./middlewares";
 import morgan from "morgan";
 import routes from "./routes";
+import { localsMiddleware } from "./middlewares";
+import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 

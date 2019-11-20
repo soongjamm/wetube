@@ -1,0 +1,56 @@
+이번 강의는 프론트부분.
+webpack은 module bundler 
+우리가 많은 파일을 가져와서 webpack에게 주면 
+webpack은 이것을 완전히 호환되는 static파일들로 변환해준다.
+
+ex) 우리 코스에서 ES6 바닐라js 쓰고있고, 또 Sass라는걸 쓸거다.
+Sass는 섹시한 css.
+그리고 모던한 신식 js쓸거다.
+
+따라서 모던js를 webpack안에 집어 넣을거고, 그걸받은 webpack은
+그냥 css와 오래된 노멀한 js로 변환해서 브라우저가 알아듣게 해줄거임.
+
+#install
+npm install webpack webpack-cli
+하나는 웹팩을 사ㅛㅇ하기 위함, 하나는 터미널에서 사용할수 있게 해줌.
+설치하고 새로운 파일 webpack.config.js를 생성
+
+그리고 package.json의 start를 바꾸자
+이제 npm start 안쓰고 
+npm rundev:server과 
+npm run 
+dev:assets로 각자 다른 콘솔에서 실행시켜야 함
+
+누군가 dev:assets라고 치면 webpack을 불러오도록 해놓을 것
+해놓으면 webpack.config.js라는 파일을 찾으려하니 파일 이름 바꾸지 말것
+만약 바꾸면 package.json에도 알려줘야 함
+
+기본적인 규칙은 엡팩은 exported configuration object을 찾는다.
+이 config파일 명심할 것, server코드와는 연관시키지 않는다는 점
+100% 클라이언트 코드다.
+즉 babel-node는 아직 쓸 수 없다.
+여기선 옛날 js써야.. 허허.. export 못쓰니까 module.exports = config 이렇게.
+
+웹팩은 두가지를 갖고있다. 하나는 entry 하나느 output
+entry는 파일들이 어디에서 왔는가?
+output은 그걸 어디에 넣는가.
+
+assets라는 폴더 생성. -> 작업할 공간
+그 안에 두개 폴더 더. js, css
+
+
+노드에는 파일과 디렉토리 경로를 absolute로 만들어주는 방법이있다.
+컴터나 서버 전체 경로를 갖게 되는것. (절대경로)
+== > path라는 걸로 할 수 있다. 노드에 기본적으로 깔려있는 패키지.
+
+__dirname은 현재 디렉토리의 이름. 어디서든 접근 가능한 노드의 전역변수
+
+output-dir은 디렉토리니까 path.join쓰고 static이라는 폴더로 보내라(export) 할거임.
+
+앞으로 사용할 파일 형식들 다 웹팩에 아려줘야함. 
+png면 나 png쓸건데 변환은 이렇게 하는거야. 이런식으로.
+css도 알려줘야 함
+
+
+
+npm run dev:assets
