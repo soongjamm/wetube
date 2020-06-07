@@ -17,7 +17,7 @@ npm install webpack webpack-cli
 
 그리고 package.json의 start를 바꾸자
 이제 npm start 안쓰고 
-npm rundev:server과 
+npm run sdev:server과 
 npm run 
 dev:assets로 각자 다른 콘솔에서 실행시켜야 함
 

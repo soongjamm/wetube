@@ -2,6 +2,19 @@
 
 Cloning youtube with VanillaJS and NodeJS
 
+## What I have used
+- NodeJS 
+- ES6
+- Express
+- dotenv
+- MongoDB
+- Pug
+- Passport
+- Webpack
+- SCSS
+- Mongoose
+
+
 ## Pages:
 
 - [ ] Home
@@ -14,3 +27,7 @@ Cloning youtube with VanillaJS and NodeJS
 - [x] Upload
 - [ ] Video Detail
 - [x] Edit Video
+
+
+## START
+-- 
