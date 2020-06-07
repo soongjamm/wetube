@@ -52,6 +52,11 @@ export const getEditVideo = async (req, res) => {
     } = req;
     try {
         const video = await Video.findById(id);
+        if (video.creator != req.user.id) {
+            console.log(video.creator, req.user.id);
+            throw Error();
+        }
+
         res.render("editVideo", { pageTitle: `Edit ${video.title}`, video })
     } catch (error) {
         res.redirect(routes.home);
@@ -90,6 +95,10 @@ export const deleteVideo = async (req, res) => {
     } = req;
 
     try {
+        const video = await Video.findById(id);
+        if (video.creator != req.user.id) {
+            throw Error();
+        }
         await Video.findOneAndRemove({ _id: id })
     } catch (error) { }
     res.redirect(routes.home)
