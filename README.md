@@ -31,7 +31,7 @@ Cloning youtube with VanillaJS and NodeJS
 
 ## START.  
 ```> mongod```.  
-```>npm run dev:assets```.  
+```> npm run dev:assets```.  
 ```> npm run dev:server```.  
 
 facebook 로그인은 http를 사용한 도메인을 허용하지 않아서 현재 불가능
