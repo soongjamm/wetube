@@ -37,7 +37,7 @@ Cloning youtube with VanillaJS and NodeJS
 
 
 ###
-facebook 로그인은 http를 사용한 도메인을 허용하지 않아서 'ngrok' 을 이용한 우회로 가능 (OS X)
+facebook 로그인은 http를 사용한 도메인을 허용하지 않아서 'ngrok' 을 이용한 우회로 가능 (OS X)  
 ```> npm install -g ngrok```  
 ```> ngrok http 4040``` 4040은 port number 입력  
 생성된 https 주소를 callback 주소, facebook URI redirection 주소로 사용
