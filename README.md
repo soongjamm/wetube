@@ -40,5 +40,8 @@ Cloning youtube with VanillaJS and NodeJS
 facebook 로그인은 http를 사용한 도메인을 허용하지 않아서 'ngrok' 을 이용한 우회로 가능 (OS X)  
 ```> npm install -g ngrok```  
 ```> ngrok http 4040``` 4040은 port number 입력  
-생성된 https 주소를 callback 주소, facebook URI redirection 주소로 사용
+생성된 https 주소를 callback 주소, facebook URI redirection 주소로 사용  
+  
 
+
+videoController의 postDeleteComment함수에서 findOne으로 비디오를 찾고, for문을 돌리면서 일치하는 코멘트를 찾아 삭제했는데, 더 좋은 방법이 있지 않을까 고민이다.

@@ -1,3 +1,4 @@
+
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
 const playBtn = document.getElementById("jsPlayButton");
@@ -6,6 +7,24 @@ const fullScreenBtn = document.getElementById("jsFullScreen");
 const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
 const volumeRange = document.getElementById("jsVolume");
+const videoViews = document.getElementById("jsVideoViews");
+
+const increaseNumber = () => {
+    videoViews.innerHTML = parseInt(videoViews.innerHTML, 10) + 1;
+}
+
+const registerView = async () => {
+    const videoId = window.location.href.split("/videos/")[1];
+
+    const r = await fetch(`/api/${videoId}/view`, {
+        method: "POST"
+    })
+
+    if (r.status === 200) {
+        increaseNumber();
+    }
+
+}
 
 
 function handlePlayClick() {
@@ -90,6 +109,7 @@ function getCurrentTime() {
 }
 
 function handleEnded() {
+    registerView();
     videoPlayer.currentTime = 0;
     playBtn.innerHTML = '<i class="fas fa-play"></i>';
 }
